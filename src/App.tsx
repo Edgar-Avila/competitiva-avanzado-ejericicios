@@ -3,6 +3,7 @@ import HomePage from "./pages/homePage";
 import AirportsPage from "./pages/airportsPage";
 import { routes } from "./routes";
 import MainLayout from "./layouts/mainLayout";
+import CityAntennasPage from "./pages/cityAntennasPage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path={routes.home()} element={<HomePage />} />
         <Route element={<MainLayout />}>
           <Route path={routes.airports()} element={<AirportsPage />} />
+          <Route path={routes.cityAntennas()} element={<CityAntennasPage />} />
         </Route>
       </Routes>
     </HashRouter>
