@@ -1,6 +1,6 @@
 import { MapContainer, TileLayer, GeoJSON, Marker, Popup } from "react-leaflet";
 import { OptimizationConfig, optimizeAntennaPlacement } from "../core/beeColonyOptimization";
-import PunoJson from "../assets/puno.json";
+import UnapJson from "../assets/unap.json";
 
 interface Props {}
 
@@ -10,9 +10,9 @@ const initialPosition = {
   lng: -74.900665,
 };
 
-const CityAntennasPage: React.FC<Props> = () => {
+const CampusAntennasPage: React.FC<Props> = () => {
   const polygon = {
-    coordinates: PunoJson.geometry.coordinates[0].map((coord: number[]) => {
+    coordinates: UnapJson.features[0].geometry.coordinates[0].map((coord: number[]) => {
       return { lat: coord[1], lng: coord[0] };
     })
   } as any;
@@ -32,7 +32,7 @@ const CityAntennasPage: React.FC<Props> = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <GeoJSON data={PunoJson as any} />
+      <GeoJSON data={UnapJson as any} />
       {result.antennas.map((antenna, index) => (
         <Marker
           key={index}
@@ -48,4 +48,4 @@ const CityAntennasPage: React.FC<Props> = () => {
   );
 };
 
-export default CityAntennasPage;
+export default CampusAntennasPage;
